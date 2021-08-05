@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 ############################################################################################
-# sleight.py:   Empire HTTP(S) C2 redirector setup script
-# Author:   VIVI | <Blog: thevivi.net> | <Twitter: @_theVIVI> | <Email: gabriel@thevivi.net>
+# sleight2.py:   Empire HTTP(S) C2 redirector setup script
+# Author:   cptsticky 
 ############################################################################################
 
 import subprocess
