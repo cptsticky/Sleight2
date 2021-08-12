@@ -18,6 +18,8 @@ R = '\033[1;31m'  #red
 T = '\033[1;93m'  #tan
 G = '\033[32m'    #green
 LG = '\033[1;32m' #light green
+domain = ''
+redirect = ''
 
 htaccess_template = '''
 RewriteEngine On
