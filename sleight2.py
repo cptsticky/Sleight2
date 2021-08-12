@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ############################################################################################
-# sleight2.py:   Empire HTTP(S) C2 redirector setup script
+# sleight2.py:   HTTP(S) C2 redirector setup script
 # Author:   cptsticky
 ############################################################################################
 
