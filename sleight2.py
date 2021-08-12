@@ -18,9 +18,6 @@ R = '\033[1;31m'  #red
 T = '\033[1;93m'  #tan
 G = '\033[32m'    #green
 LG = '\033[1;32m' #light green
-domain = ''
-redirect = ''
-redirector = ''
 
 htaccess_template = '''
 RewriteEngine On
@@ -99,17 +96,17 @@ def convert_profile():
                 LHOST = args.ip
     else:
         LHOST = raw_input(
-        '\n' + G + '[+]' + W + ' Empire C2 LHOST: ')
+        '\n' + G + '[+]' + W + 'C2 LHOST: ')
         while LHOST == '':
-            LHOST = raw_input("[-] Empire C2 LHOST: ")
+            LHOST = raw_input("[-] C2 LHOST: ")
 
     if args.port:
                 LPORT = args.port
     else:
         LPORT = raw_input(
-        G + '[+]' + W + ' Empire C2 LPORT: ')
+        G + '[+]' + W + ' C2 LPORT: ')
         while LPORT == '':
-            LPORT = raw_input("[-] Empire C2 LPORT: ")
+            LPORT = raw_input("[-] C2 LPORT: ")
 
     if args.modeHTTPS:
                 HTTPS = args.modeHTTPS
