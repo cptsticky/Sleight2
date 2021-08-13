@@ -95,6 +95,7 @@ def convert_profile():
     # Get LHOST, LPORT and redirect site
     if args.ip:
         # Get LHOST, LPORT and redirect site
+                global LHOST
                 LHOST = args.ip
     else:
         LHOST = raw_input(
@@ -103,6 +104,7 @@ def convert_profile():
             LHOST = raw_input("[-] C2 LHOST: ")
 
     if args.port:
+                global LPORT
                 LPORT = args.port
     else:
         LPORT = raw_input(
@@ -126,7 +128,16 @@ def convert_profile():
         G + '[+]' + W + ' Redirect Site URL: ')
         while redirect == '':
             redirect = raw_input("[-] Redirect Site URL: ")
-      
+    
+    if not args.myDomain:
+        global domain
+        domain = raw_input(
+            '\n' + G + '[+]' + W + ' Redirector domain (e.g. example.com): ')
+        while domain == '':
+            domain = raw_input("[-] Redirector domain (e.g. example.com): ")
+    else:
+                domain = args.myDomain
+    
     commProfile = open(args.commProfile, 'r')
     cp_file = commProfile.read()
     commProfile.close()
