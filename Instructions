@@ -1,1 +1,54 @@
-This script requires that you have obtained a domain name and pointed www.yourdomain.com and yourdomain.com at your public IP if you wish to use HTTPS.
+Usage:
+
+sleight2emponly.py can be used in 3 ways:
+sleight2.py will have additional features as I continue work on it.
+For now, if you want to setup an empire c2 redirector us sleight2emponly.py
+1) Setup HTTP Redirector:
+
+    Run Sleight and feed it an Empire communication profile.
+    Input your Empire C2's IP address and listening port.
+    Say no to the HTTPS prompt.
+    Input a site to redirect all invalid requests to.
+    Start an Empire HTTP listener with the 'Host' property set to the domain of your redirector.
+
+HTTP Redirectors reference:
+
+    https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/
+
+2) Setup HTTPS Redirector:
+
+    Run Sleight and feed it an Empire communication profile.
+    Input your Empire C2's IP address and listening port.
+    Say yes to the HTTPS prompt.
+    Input a site to redirect all invalid requests to.
+    Input the domain assigned to your redirector (for generation of a Let's Encrypt certificate).
+    Agree to the certbot prompts.
+    Start an Empire HTTPS listener with the 'Host' property set to the domain of your redirector.
+
+HTTPS Redirector Setup Notes:
+
+    Certificate generation will only work once your redirector's domain has propagated successfully.
+    You'll need DNS entries for both DOMAIN.com and www.DOMAIN.com for your redirector's domain.
+    You can use the default HTTPS certificates Empire comes with (located in the '/empire/data/' directory) for the 'CertPath' property when starting a HTTPS listener on your C2 server.
+
+HTTPS Redirectors reference:
+
+    https://bluescreenofjeff.com/2018-04-12-https-payload-and-c2-redirectors/
+    https://posts.specterops.io/automating-apache-mod-rewrite-and-cobalt-strike-malleable-c2-profiles-d45266ca642
+
+3) Rules only (no setup):
+
+If you only want to use Sleight to convert an Empire communication profile into mod_rewrite rules and not setup your redirector, simply feed it a communication profile and say no to the "proceed with setup" prompt.
+4) CLI arguments:
+
+If you want to use Sleight non interactively, command line arguments can be found in the default output. Any value not defined at launch will be prompted for during execution.
+Examples:
+
+$ sudo python sleight2emponly.py -c profiles/default.txt
+
+$ sudo ./sleight2emponly.py  -c profiles/default.txt -r https://somewebsite.com/AnyURI -i C2IP -p 80  -t domainofredirector
+
+$ sudo ./sleight2emponly.py  -c profiles/default.txt -r https://somewebsite.com/AnyURI -i C2IP -p 443  -t domainofredirector
+
+Troubleshooting:
+Ensure that the profile you set in Empire/Starkiller matches exactly the profile in the Sleight2 https://github.com/cptsticky/Sleight2/tree/main/profiles that you have downloaded.
