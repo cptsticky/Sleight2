@@ -186,7 +186,7 @@ def get_https_cert():
 # TODO: add sub domain enumeration here, so news,images,www,static can be fed as a CLI arg and the array is parsed as multiple -d options.
     if args.proceed:
         subprocess.call(['certbot', 'certonly', '--standalone', '-d', \
-        str(domain), '-d', 'www.'+str(domain), '--register-unsafely-without-email', '--agree-tos', '--non-interactive'])
+        str(domain), '-d', 'www.'+str(domain), '--register-unsafely-without-email', '--agree-tos', '--non-interactive', '--expand'])
 
     else:
         subprocess.call(['certbot', 'certonly', '--standalone', '-d', \
@@ -356,4 +356,3 @@ if __name__ == "__main__":
 
         except KeyboardInterrupt:
                 shutdown()
-
